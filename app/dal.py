@@ -50,3 +50,10 @@ def get_managers_excluding_departments():
     return managers
 
 
+def get_employees_by_lastname_and_age():
+    client = get_client()
+    db = client['week-16-db']
+    collection = db['employee_data_advanced']
+    employees = collection.find({'age': {'$lt': 35}, 'name': {'$in': ['Wright', 'Nelson']}}, {'name': 1, 'age': 1, 'job_role.department': 1, '_id': 0})
+    client.close()
+    return employees
