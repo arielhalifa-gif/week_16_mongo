@@ -16,4 +16,21 @@ def get_engineering_high_salary_employees():
 
 
 def get_employees_by_age_and_role():
-    
+    client = get_client()
+    db = client['week-16-db']
+    collection = db['employee_data_advanced']
+    by_age = collection.find({'age': {'$gte': 30, '$lte': 45}, 'job_role.department': {'$in': ['Specialist', 'Engineer']}})
+    client.close()
+    return by_age
+
+
+def get_top_seniority_employees_excluding_hr():
+    client = get_client()
+    db = client['week-16-db']
+    collection = db['employee_data_advanced']
+    employees_7 = collection.find({'job_role.department': {'$ne': 'HR'}}).sort('years_at_company', -1 ).limit(7)
+    client.close()
+    return employees_7
+
+    def get_employees_by_age_or_seniority():
+        
