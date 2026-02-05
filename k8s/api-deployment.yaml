@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: api-container
-        image: arielhalifa/api:v1
+        image: arielhalifa/api-mongo-week-16:v1
         ports:
         - containerPort: 80
