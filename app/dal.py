@@ -41,3 +41,12 @@ def get_employees_by_age_or_seniority():
     return employees
 
 
+def get_managers_excluding_departments():
+    client = get_client()
+    db = client['week-16-db']
+    collection = db['employee_data_advanced']
+    managers = collection.find({'job_role.title': 'Manager', 'job_role.department': {'$nin':['Sales', 'Marketing']}})
+    client.close()
+    return managers
+
+
