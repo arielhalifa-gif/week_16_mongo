@@ -39,3 +39,7 @@ def excluding_departments():
 def by_lastname_and_age():
     result = dal.get_employees_by_lastname_and_age()
     return result
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port="8000")
